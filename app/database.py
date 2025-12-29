@@ -14,3 +14,5 @@ def get_db():
         yield db
     finally:
         db.close()
+# Import models để tạo tables
+from app.models.user import User
