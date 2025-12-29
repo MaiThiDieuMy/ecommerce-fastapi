@@ -19,6 +19,11 @@ def get_db():
     finally:
         db.close()
 
+
 # Import models để tạo tables
 from app.models.product import Product
 from app.models.category import Category
+
+# Import models để tạo tables
+from app.models.user import User
+
