@@ -2,28 +2,21 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from app.config import settings
-
 engine = create_engine(
     settings.DATABASE_URL, 
     connect_args={"check_same_thread": False}
 )
-
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
 Base = declarative_base()
-
 def get_db():
     db = SessionLocal()
     try:
         yield db
     finally:
         db.close()
-
-
-# Import models để tạo tables
-from app.models.product import Product
-from app.models.category import Category
-
 # Import models để tạo tables
 from app.models.user import User
-
+from app.models.product import Product
+from app.models.category import Category
+from app.models.cart import CartItem
+from app.models.order import Order, OrderItem
